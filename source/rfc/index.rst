@@ -5,3 +5,4 @@ Proposals and standards
    :maxdepth: 2
 
    logs
+   nightly_retention
