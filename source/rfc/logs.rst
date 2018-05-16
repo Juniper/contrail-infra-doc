@@ -4,7 +4,7 @@ Logs
 Problem
 -------
 
-Our log server is full way too often. We're currently running on a 14-day policy, even though we should be keeping at least 30 days of logs.
+The log server is full way too often. We're currently running on a 14-day policy, even though we should be keeping at least 30 days of logs.
 
 Current setup
 ~~~~~~~~~~~~~
@@ -24,7 +24,7 @@ Notes:
 Retention policy
 ----------------
 
-We should keep 30 days of logs for reviews - that should be enough to be able to merge properly a review.
+We should keep 30 days of logs for reviews - that should be enough to be able to merge a review properly.
 
 Nightlies
 ~~~~~~~~~
@@ -34,7 +34,7 @@ Nightly logs should follow the very same policy that build artifacts (packages a
 Solution
 --------
 
-We should increase server size to 700GB (allowing some wiggle room for other machines to expand if necessary) which should last us during quiet time (20GB/day gives us 600GB with 30 days). In the meantime we should focus on a proper fix.
+We should increase server size to 800GB (allowing some wiggle room for other machines to expand if necessary) which should last us during quiet time (20GB/day gives us 600GB with 30 days). In the meantime we should focus on a proper fix.
 
 
 Proper fix
@@ -44,9 +44,4 @@ Storage
 ~~~~~~~
 
 We should move to an object storage solution as soon as possible. One possibility would be AWS with S3. Having object storage mounted as fs allows us to store the logs same as before, but with no limits other than our own enforced policies.
-
-Nightly handling
-~~~~~~~~~~~~~~~~
-
-There should be a tool (or part of the artifact publisher) allowing us to select logs based on build number and store them separately to prevent 30-day policy from kicking in.
 
