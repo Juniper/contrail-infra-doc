@@ -31,8 +31,8 @@ Nightlies
 
 Nightly logs should follow the very same policy that build artifacts (packages and containers) will follow to ensure that we have all information we need historically. What's more, we should consider keeping nightly logs for a longer period of time (60 or 90 days), as someone might use an older build (even though we don't provide any support for them).
 
-Solution
---------
+Quick fix
+---------
 
 We should increase server size to 800GB (allowing some wiggle room for other machines to expand if necessary) which should last us during quiet time (20GB/day gives us 600GB with 30 days). In the meantime we should focus on a proper fix.
 
@@ -43,5 +43,15 @@ Proper fix
 Storage
 ~~~~~~~
 
-We should move to an object storage solution as soon as possible. One possibility would be AWS with S3. Having object storage mounted as fs allows us to store the logs same as before, but with no limits other than our own enforced policies.
+Because it's extremely difficult to properly estimate the log growth due to variety of possible reasons (amount of jobs, reviews, flakiness), We should move to an object storage solution as soon as possible. 
+
+One possibility would be AWS with S3. Having object storage mounted as fs (s3fs) allows us to store the logs same as before, but with no limits other than our own enforced policies as the storage is pretty much unlimited.
+
+Log curator
+~~~~~~~~~~~
+
+Log curator's reponsibility is to plainly remove the logs after a defined period of time. To be able to maintain two different policies for nightly and reviews at the same time, we have two options:
+
+ - separate review logs (e.g. /var/www/logs) and nightly logs (e.g. /var/www/nightly-logs)
+ - expand log curator to be able to enforce different time policies for /var/www/logs and /var/www/logs/periodic-nightly
 
