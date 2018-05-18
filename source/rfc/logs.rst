@@ -43,7 +43,7 @@ Proper fix
 Storage
 ~~~~~~~
 
-Because it's extremely difficult to properly estimate the log growth due to variety of possible reasons (amount of jobs, reviews, flakiness), We should move to an object storage solution as soon as possible. 
+Because it's extremely difficult to properly estimate the log growth due to variety of possible reasons (amount of jobs, reviews, flakiness), we should move to an object storage solution as soon as possible. 
 
 One possibility would be AWS with S3. Having object storage mounted as fs (s3fs) allows us to store the logs same as before, but with no limits other than our own enforced policies as the storage is pretty much unlimited.
 
@@ -52,6 +52,7 @@ Log curator
 
 Log curator's reponsibility is to plainly remove the logs after a defined period of time. To be able to maintain two different policies for nightly and reviews at the same time, we have two options:
 
- - separate review logs (e.g. /var/www/logs) and nightly logs (e.g. /var/www/nightly-logs)
- - expand log curator to be able to enforce different time policies for /var/www/logs and /var/www/logs/periodic-nightly
+- separate review logs (e.g. /var/www/logs) and nightly logs (e.g. /var/www/nightly-logs)
+- expand log curator to be able to enforce different time policies for /var/www/logs and /var/www/logs/periodic-nightly
 
+If we are to use S3, we can use `S3 Object Expiration <https://aws.amazon.com/blogs/aws/amazon-s3-object-expiration/>`_ instead of Log Curator, allowing us to drop it completely.
