@@ -10,3 +10,4 @@ Proposals and standards
    metrics
    ansible-style-guide
    external-package-managers
+   build-dashboard
