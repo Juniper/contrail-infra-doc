@@ -5,5 +5,6 @@ Architecture
    :maxdepth: 2
 
    overview
+   mirroring
 
 
