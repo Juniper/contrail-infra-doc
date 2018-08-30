@@ -47,19 +47,11 @@ Below are specific rules for certain repositories:
 Juniper/contrail-infra
 **********************
 
-This repo contains Puppet code used to configure the Contrail CI services. Development follows a
-special two-stage path that first . The procedure is described below:
+This repo contains Puppet code used to configure the Contrail CI services.
+The procedure for making changes to the code:
 
 #. make sure that you perform a syntax check of your changes: https://github.com/Juniper/contrail-infra/blob/development/doc/source/contributing.rst#syntax-checks-and-linting
-#. create and merge a PR to the ``development`` branch first (use the general procedure)
-#. to push the changes further to the production branch, create an intermediate commit on the "staging" branch (origin is the J/c-i repo):
-
-   #. ``git checkout production``
-   #. ``git checkout -B staging``
-   #. ``git merge origin/development``
-   #. ``git push origin staging``
-#. create a pull request from Juniper/contrail-infra:staging to Juniper/contrail-infra:production
-#. merge it using the general procedure
+#. create and merge a PR to the ``production`` branch using the general approval workflow for GitHub
 #. after your PR gets merged, push the changes to the production Puppet server (ci-puppetmaster.opencontrail.org)
 
 Juniper/zuul-jobs
