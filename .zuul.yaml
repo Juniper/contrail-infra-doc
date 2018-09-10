@@ -6,3 +6,7 @@
     gate:
       jobs:
         - build-infra-doc
+    post:
+      jobs:
+        - publish-infra-doc
+        
