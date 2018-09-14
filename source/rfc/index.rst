@@ -6,6 +6,7 @@ Proposals and standards
 
    logs
    ci-development-workflow
+   zuul-development-guidelines
    versioning
    metrics
    ansible-style-guide
