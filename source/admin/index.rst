@@ -5,3 +5,4 @@ Administrator's Guide
    :maxdepth: 2
 
    forcemerge
+   maven-mirror
