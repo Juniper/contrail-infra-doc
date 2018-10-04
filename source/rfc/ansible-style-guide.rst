@@ -69,6 +69,7 @@ ANSIBLE-J0004 - Task Declaration
 * Lowercase the first letter of a task name.
 * Use the map syntax. Use only one space after the colon.
 * Use the following order for task declaration:
+
   * task name
   * task map declaration
   * loop operators
