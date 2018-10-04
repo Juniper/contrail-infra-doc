@@ -12,4 +12,5 @@ This guide is for all OpenContrail contributors. If you work on a project hosted
    artifacts
    nightly
    debugging
+   sanity-development
 
