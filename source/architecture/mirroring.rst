@@ -19,7 +19,7 @@ Central proxy
 ======================  =======================================  ============
 Endpoint                Target                                   Description
 ======================  =======================================  ============
-/ubuntu/                10.84.72.46 (`Ubuntu mirror`_)           Ubuntu packages mirror
+/ubuntu/                10.87.72.46 (`Ubuntu mirror`_)           Ubuntu packages mirror
 /rhel/                  10.84.5.83 (`RHEL mirror`_)              RHEL packages mirror
 /centos/                `ci-repo.englab.juniper.net`_            CentOS packages mirror
 /epel/                  `ci-repo.englab.juniper.net`_            Epel packages mirror
@@ -49,7 +49,7 @@ ci-repo.englab.juniper.net
 Ubuntu mirror
 -------------
 
-**Address:** 10.84.72.46
+**Address:** 10.87.72.46
 
 **Description:** Puppet-managed repository host for ubuntu, using `reprepro <https://wiki.debian.org/DebianRepository/SetupWithReprepro>`_. Setup taken from openstack's puppet repository.
 
