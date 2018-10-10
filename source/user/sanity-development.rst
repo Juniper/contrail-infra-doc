@@ -17,7 +17,7 @@ job steps and should be reverted before performing the merge. Let's assume chang
 
     vars:
       contrail_docker_registry: opencontrailnightly
-      contrail_version: latest
+      contrail_version: master-latest
 
  A full definition would be:
 
@@ -33,7 +33,7 @@ job steps and should be reverted before performing the merge. Let's assume chang
       openstack_version: queens
       kolla_version: queens
       contrail_docker_registry: opencontrailnightly
-      contrail_version: latest
+      contrail_version: master-latest
     nodeset:
       nodes:
         - name: kolla-aio
