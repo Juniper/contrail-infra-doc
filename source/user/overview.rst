@@ -3,7 +3,7 @@ Overview
 
 When you create a new change request on `Gerrit <https://review.opencontrail.org>`_, Zuul will start job execution. It will be indicated by a comment saying ``Starting jobs`` from ``Zuul v3 CI`` account.
 
-The status of all currently running jobs can be verified on `Zuul's webpage <https://zuulv3.opencontrail.org>`_. Search for your change ID and click on the title to expand the list of the running jobs. Finished jobs will show their result on the list. By clickin on job's name, you will be redirected either to the log location (if job finished) or to log live stream (if the job is still running). When all of the jobs that are part of the buildset are finished, results are posted to Gerrit and job disappears from Zuul's live status page.
+The status of all currently running jobs can be verified on `Zuul's webpage <http://zuulv3.opencontrail.org>`_. Search for your change ID and click on the title to expand the list of the running jobs. Finished jobs will show their result on the list. By clickin on job's name, you will be redirected either to the log location (if job finished) or to log live stream (if the job is still running). When all of the jobs that are part of the buildset are finished, results are posted to Gerrit and job disappears from Zuul's live status page.
 
 After a job finishes, the change (review) receives a vote and comment from Zuul.
 
