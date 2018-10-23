@@ -185,3 +185,20 @@ Linter
 and roles. It has a set of predefined rules and in this context is extensible. Adding custom rules
 is supported by runtime flags. Defining a rule is a matter of inheriting from the `AnsibleLintRule`
 class and providing an implementation of a specific method.
+
+skip_ansible_lint - Tag Usage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use skip_ansible_lint tag with any task that you want to skip running linter for.
+Remember to add comment with information about reason why are you skipping lint check 
+and skipped Ansible lint rule.
+
+.. code-block:: yaml
+
+  - name: install dependencies from Puppetfile
+    shell: PATH={{ ruby_path }}:$PATH r10k puppetfile install Puppetfile
+    args:
+      chdir: '{{ workdir }}'
+    #ANSIBLE0013 ignore since we can't use shell with rbenv
+    tags:
+    - skip_ansible_lint
