@@ -11,3 +11,4 @@ Proposals and standards
    ansible-style-guide
    external-package-managers
    build-dashboard
+   publisher
