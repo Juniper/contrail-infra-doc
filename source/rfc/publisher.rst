@@ -4,7 +4,7 @@ Tungsten Fabric Publisher Specification
 The aim of this spec is to define the functional requirements the publisher software should fulfill.
 
 Problem Description
-===================
+-------------------
 
 In Tungsten Fabric there are dozens of container images built in every periodic nightly build.
 Initially in the image building jobs the images are pushed to an internal, per-build registry. Only
@@ -12,7 +12,7 @@ after the jobs are finished are they published to (at the moment of this writing
 Therefore we need a functional piece of software which will provide this functionality.
 
 Current State of Art
-====================
+--------------------
 
 The current *publisher.py* script has a few confusing functionalities, which make it harder to use
 and understand on how it works:
@@ -28,7 +28,7 @@ and understand on how it works:
   used or needed.
 
 Functional Requirements
-=======================
+-----------------------
 
 The publisher software should provide the functionalities listed below. All of the actions should
 take an input in the form of a configuration file (specification of which is provided in
@@ -49,7 +49,7 @@ take an input in the form of a configuration file (specification of which is pro
 9. Should support retries in both pull / push functionalities.
 
 CLI Arguments
--------------
+~~~~~~~~~~~~~
 
 The software should have the following CLI inputs:
 * config - path to the configuration file
@@ -57,7 +57,7 @@ The software should have the following CLI inputs:
 * build_no - build number for the release
 
 Configuration Specification
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Considering the functional and CLI requirements, the configuration file, to support *build_no* and
 *release* parameters, needs to be a template. Below is an example configuration file for the
