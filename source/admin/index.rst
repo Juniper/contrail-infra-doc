@@ -6,3 +6,4 @@ Administrator's Guide
 
    forcemerge
    maven-mirror
+   nexus-tpc-repository
