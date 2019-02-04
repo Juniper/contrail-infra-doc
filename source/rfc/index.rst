@@ -12,3 +12,4 @@ Proposals and standards
    external-package-managers
    build-dashboard
    publisher
+   unit-test-contribution-guide
