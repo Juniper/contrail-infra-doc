@@ -4,9 +4,10 @@ Ansible Style Guide
 Purpose
 -------
 
-The purpose of this document is to define and describe the style guide to be used for Ansible
-in contrail-project-config and contrail-zuul-jobs projects. Topics include but are not limited
-to: role tasks separation between task files, task definition, interpolation syntax etc.
+The purpose of this document is to define and describe the style guide
+to be used for Ansible in contrail-project-config and contrail-zuul-jobs
+projects. Topics include but are not limited to: role tasks separation between
+task files, task definition, interpolation syntax etc.
 
 This guide is inspired by `whitecloud's ansible style guide <https://github.com/whitecloud/ansible-styleguide>`_.
 
@@ -16,7 +17,8 @@ Rules
 ANSIBLE-J0001 - YAML File Format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-YAML files should begin with the YAML marker `---` marking the start of the document and end with a blank line.
+YAML files should begin with the YAML marker `---` marking the start
+of the document and end with a blank line.
 
 .. code-block:: yaml
 
@@ -67,7 +69,8 @@ ANSIBLE-J0004 - Task Declaration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Lowercase the first letter of a task name.
-* Use the map syntax. Use only one space after the colon.
+* Use the map syntax.
+* Use only one space after the colon.
 * Use the following order for task declaration:
 
   * task name
@@ -93,20 +96,22 @@ ANSIBLE-J0004 - Task Declaration
 ANSIBLE-J0005 - Role File Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The number and size of task definitions in a task file should be kept in reasonable
-bounds. Should a single task file get too big, it should be separated into multiple
-task files, with only `include_tasks:` statements present in the main.yaml file of the role.
+The number and size of task definitions in a task file should be kept
+in reasonable bounds. When a single task file get too big, it should be
+separated into multiple task files, with only `include_tasks:`
+statements present in the main.yaml file of the role.
 
 .. code-block:: bash
 
-  roles/
-    fetch-logs-sanity-tests/
-      tasks/
-        container-logs.yaml
-        contrail-logs.yaml
-        main.yaml
-        kolla-logs.yaml
-        sanity-logs.yaml
+  .
+  └── roles/
+      └── fetch-logs-sanity-tests/
+          └── tasks/
+              ├── container-logs.yaml
+              ├── contrail-logs.yaml
+              ├── main.yaml
+              ├── kolla-logs.yaml
+              └── sanity-logs.yaml
 
 For the above structure, the main.yaml file would hold:
 
@@ -120,7 +125,8 @@ For the above structure, the main.yaml file would hold:
 ANSIBLE-J0006 - Quotes
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Always quote strings (defaulting to single quotes). Do NOT quote:
+| Always quote strings (defaulting to single quotes).
+| Do NOT quote:
 
   * `hosts:` targets (e.g. `hosts: databases` rather than `hosts: 'databases'`)
   * `include_tasks:` and `include_roles:` target file names
@@ -130,7 +136,8 @@ Always quote strings (defaulting to single quotes). Do NOT quote:
   * boolean values
   * conditional logic (`when:` task options)
 
-Use double quotes only where single quotes can not be used to write syntactically or semantically correct code:
+Use double quotes only where single quotes can not be used to write
+syntactically or semantically correct code:
 
 .. code-block:: yaml
 
@@ -182,16 +189,17 @@ Linter
 ------
 
 `ansible-lint <https://github.com/willthames/ansible-lint>`_ allows for linting Ansible playbooks
-and roles. It has a set of predefined rules and in this context is extensible. Adding custom rules
-is supported by runtime flags. Defining a rule is a matter of inheriting from the `AnsibleLintRule`
-class and providing an implementation of a specific method.
+and roles. It has a set of predefined rules and in this context is extensible.
+Adding custom rules is supported by runtime flags. Defining a rule is a matter
+of inheriting from the `AnsibleLintRule` class and providing an implementation
+of a specific method.
 
 skip_ansible_lint - Tag Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use skip_ansible_lint tag with any task that you want to skip running linter for.
-Remember to add comment with information about reason why are you skipping lint check
-and name of skipped ansible-lint rule.
+Use skip_ansible_lint tag with any task that you want to skip running
+linter for. Remember to add comment with information about reason why
+are you skipping lint check and name of skipped ansible-lint rule.
 
 .. code-block:: yaml
 
