@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f5c4f37_e77522ce",
+        "filename": "source/rfc/services-monitoring.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 593
+      },
+      "writtenOn": "2019-03-21T11:59:25Z",
+      "side": 1,
+      "message": "I\u0027m thinking this list mixes implementation details (e.g. monitoring daemon) with, what from the user side, we\u0027d like to have/experience (call it \u0027business\u0027 needs). I\u0027d put only the latter here and start with that. Meaning\n\n\u0027Monitoring solution should allow:\u0027\n* to gather and store node resource usage\n* to health check services\n* etc\n\nWe can discuss our needs offline.",
+      "revId": "e564af2a9f0ecb34a5e8d04e9ba9f502bf59e082",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f5c4f37_8772e610",
+        "filename": "source/rfc/services-monitoring.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 593
+      },
+      "writtenOn": "2019-03-21T11:59:25Z",
+      "side": 1,
+      "message": "Please use formal statements :)\n\ne.g. \u0027manual intervention triggered by a Slack alert\u0027",
+      "revId": "e564af2a9f0ecb34a5e8d04e9ba9f502bf59e082",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f5c4f37_874b06af",
+        "filename": "source/rfc/services-monitoring.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 593
+      },
+      "writtenOn": "2019-03-21T11:59:25Z",
+      "side": 1,
+      "message": "Events IMO. For any visualisation we can just copy/visualise the last known status, which was transitioned to by an event. Meaning if the last known transition was to \u0027failed\u0027 state, the current state is also \u0027failed\u0027.",
+      "revId": "e564af2a9f0ecb34a5e8d04e9ba9f502bf59e082",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f5c4f37_6761323a",
+        "filename": "source/rfc/services-monitoring.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 593
+      },
+      "writtenOn": "2019-03-21T11:59:25Z",
+      "side": 1,
+      "message": "I\u0027d say 3 months at the least.",
+      "revId": "e564af2a9f0ecb34a5e8d04e9ba9f502bf59e082",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f5c4f37_27d0dac9",
+        "filename": "source/rfc/services-monitoring.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 593
+      },
+      "writtenOn": "2019-03-21T11:59:25Z",
+      "side": 1,
+      "message": "Seems like a continuation of a sentence?",
+      "revId": "e564af2a9f0ecb34a5e8d04e9ba9f502bf59e082",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f5c4f37_07d5d6b9",
+        "filename": "source/rfc/services-monitoring.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 593
+      },
+      "writtenOn": "2019-03-21T11:59:25Z",
+      "side": 1,
+      "message": "Please make sure that in the future you break the lines. It\u0027s hard to read when you need to scroll horizontally.",
+      "revId": "e564af2a9f0ecb34a5e8d04e9ba9f502bf59e082",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f5c4f37_c7721ee4",
+        "filename": "source/rfc/services-monitoring.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 593
+      },
+      "writtenOn": "2019-03-21T11:59:25Z",
+      "side": 1,
+      "message": "\u0027new idea from email about Tech-Talk\u0027 - it doesn\u0027t matter where the idea came from, so you need not to put information like this into a doc",
+      "revId": "e564af2a9f0ecb34a5e8d04e9ba9f502bf59e082",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f5c4f37_e7d9a2f4",
+        "filename": "source/rfc/services-monitoring.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 593
+      },
+      "writtenOn": "2019-03-21T11:59:25Z",
+      "side": 1,
+      "message": "Please do break this into multiple lines.",
+      "revId": "e564af2a9f0ecb34a5e8d04e9ba9f502bf59e082",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
+    }
+  ]
+}
