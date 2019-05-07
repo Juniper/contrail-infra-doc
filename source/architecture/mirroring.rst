@@ -23,8 +23,6 @@ Endpoint                Target                                   Description
 /rhel/                  10.84.5.83 (`RHEL mirror`_)              RHEL packages mirror
 /centos/                `ci-repo.englab.juniper.net`_            CentOS packages mirror
 /epel/                  `ci-repo.englab.juniper.net`_            Epel packages mirror
-/oc-centos-tpc/         `ci-repo.englab.juniper.net`_            old opencontrail tpc repo
-/oc-centos-tpc-         `ci-repo.englab.juniper.net`_            per-branch opencontrail tpc packages
 /contrail-third-party/  `ci-repo.englab.juniper.net`_            cached contrail-third-party-cache
 /pypi/                  `PyPi <https://pypi.org>`_               local caching mirror for pypi packages
 ======================  =======================================  ============
@@ -43,7 +41,6 @@ ci-repo.englab.juniper.net
   - contrail-third-party: `/opt/opencontrail_ci/`
 
 **Notes:**
-  - `opencontrail-tpc-*` repositories are managed manually via pulp interface
   - `contrail-third-party` is populated via cron script from `github repository <https://github.com/Juniper/contrail-third-party-cache>`_.
 
 Ubuntu mirror
