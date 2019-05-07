@@ -43,7 +43,6 @@ ci-repo.englab.juniper.net
   - contrail-third-party: `/opt/opencontrail_ci/`
 
 **Notes:**
-  - `opencontrail-tpc-*` repositories are managed manually via pulp interface
   - `contrail-third-party` is populated via cron script from `github repository <https://github.com/Juniper/contrail-third-party-cache>`_.
 
 Ubuntu mirror
