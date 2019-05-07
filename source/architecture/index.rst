@@ -7,5 +7,5 @@ Architecture
    overview
    manifests
    mirroring
-
+   infrastructure
 

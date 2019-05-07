@@ -6,4 +6,6 @@ Administrator's Guide
 
    forcemerge
    maven-mirror
-   nexus-tpc-repository
+   sonatype-nexus
+   ci-repo
+   zuul
