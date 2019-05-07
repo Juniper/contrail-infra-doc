@@ -17,4 +17,3 @@ Workflow
 8. The review receives Code-Review +2 vote.
 9. Review gets approved (Approved +1 vote).
 10. After all voting requirements are met, Zuul automatically submits the change for merge and Gerrit merges it.
-
