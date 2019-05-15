@@ -5,6 +5,7 @@ Administrator's Guide
    :maxdepth: 2
 
    forcemerge
+   puppet
    maven-mirror
    sonatype-nexus
    repos-registries
