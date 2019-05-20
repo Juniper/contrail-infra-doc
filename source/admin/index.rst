@@ -10,3 +10,4 @@ Administrator's Guide
    sonatype-nexus
    repos-registries
    zuul
+   monitoring
