@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f5c4f37_196ddc31",
+        "filename": "source/admin/forcemerge.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 593
+      },
+      "writtenOn": "2019-05-22T11:07:39Z",
+      "side": 1,
+      "message": "You need empty line separation for the engine to recognise\nthis as a nested bullet list.\n\nSee here: http://rst.ninjs.org/#VG8gZm9yY2UtbWVyZ2UgYSByZXZpZXcsIHlvdSBuZWVkIHRvIGJlIGEgbWVtYmVyIG9mIGBgUHJvamVjdCBCb290c3RyYXBlcnNgYApHZXJyaXQgZ3JvdXAuIFRvIGZvcmNlIG1lcmdlIGEgcmV2aWV3IHlvdSBuZWVkIHRvOgoKLSBzZW5kIHJlcGx5IChyZXBsaWVzKSB3aXRoIGFsbCB0aGVzZSB2b3RlczoKCiAgLSBgYEFwcHJvdmVkICsxYGAKICAtIGBgQ29kZS1SZXZpZXcgKzJgYAogIC0gYGBWZXJpZmllZCArMmBgCgotIHJlZnJlc2ggYSBHZXJyaXQgcGFnZSBpbiBicm93c2VyIGFuZCBhIG5ldyBidXR0b24gYGBTdWJtaXRgYCB3aWxsIGFwcGVhcgotIGNsaWNrIGBgU3VibWl0YGAgdG8gbWVyZ2UgdGhlIGNoYW5nZQ\u003d\u003d",
+      "revId": "599525e06a7d2b665e6a414b3d97d6a5394f4921",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
+    }
+  ]
+}
