@@ -34,9 +34,13 @@ Autoholding VMs
 ---------------
 
 VMs which are used to run jobs can be marked to be held (meaning: to not be deleted after a job finishes).
-For the current Zuul installation this can only be done when a job fails in the run playbook
-so a VM will NOT be held if it has a status other than FAILED or it only failed in a pre or post
-playbook. The VM will also not be held if it failed in run AND a post playbook.
+For the current Zuul installation this can only be done when a job fails in the ``run`` playbook.
+A VM `will` be still deleted if:
+
+- a job has a status other than `FAILED` 
+- or it failed in a ``pre-run`` playbook
+- or it failed in a ``post-run`` playbook
+- or it failed in both ``run`` and ``post-run`` playbook
 
 To hold a node perform the following:
 
