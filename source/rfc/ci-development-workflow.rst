@@ -72,15 +72,22 @@ The contrail-zuul-jobs repo contains roles and jobs for various projects, so
 it is impractical to execute all the affected jobs in the check pipeline for
 this repo. The only checks that are performed are unit tests and linting of
 the Ansible code. If you're preparing a change that modifies a job for a
-project you should test it as a dependent change:
+project you should test it as a dependent change.
 
-#. Create your change for the c-z-j project (change A).
+Suppose you're modifying a role which is used in the `contrail-sanity-centos7-kolla-ocata`
+job. This job is a part of the `systests` project template defined in contrail-project-config.
+The template is applied to e.g. the `contrail-controller` project, which means the job
+will be run if any change is made to the project. So to test your changes for the abstract
+role you need to do the following:
+
+#. Create your change for the contrail-zuul-jobs project (change A; changes to the role).
 #. Create a dummy change (e.g. add an empty file) for the related project
-   (change B). In the commit message for change B, specify change A as a
-   dependent change using the "Depends-On:" directive.
+   (change B in `contrail-controller`). In the commit message for change B, specify change A as a
+   dependent change using the "Depends-On: <change-id>" directive, where `change-id` is the
+   value of the `Change-Id` header of change A.
 #. Place a comment under change A that contains a reference to change B, so
    that reviewers can verify that the changed job passed.
-#. Make sure that checks for the change B pass.
+#. Make sure that the `check` pipeline (all jobs run for that pipeline) for the change B pass.
 
 Transitional changes in CI
 --------------------------
