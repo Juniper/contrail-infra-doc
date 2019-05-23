@@ -174,6 +174,84 @@ There is a simple script written to dump requeue commands for all pipelines on z
 at /root/zuul_restarts/dump_queues.sh. Execute it before a restart and source the newest
 `queue_<timestamp>.txt` file after Zuul is running again.
 
+Aborting Builds
+---------------
+
+In the currently deployed Zuul version there is no way to abort Zuul buildsets with a push of a button.
+At least Zuul-wise there is no clean way to do it. For this purpose a Python script was written which,
+given a buildset ID (or a branch name in case of nightly runs), aborts the matching, running buildset.
+In short, the script kills system processes which are associated to the buildset.
+
+Aborting changeset-related builds the Zuul way
+**********************************************
+
+Suppose you have a review open and a `check` pipeline buildset is running for that. The running
+buildset will be aborted when you submit a new patchset to the review. But Zuul will also enqueue
+a new buildset for the latest patchset.
+
+If you want Zuul not to start any new buildset for a review, you can submit a patchset with an
+invalid Zuul configuration (.zuul.yaml file in the project root directory) e.g.:
+
+.. code:: bash
+
+  - invalid_zuul_configuration
+
+Aborting any builds
+*******************
+
+To execute this you will need:
+
+* the IP addresses of the Zuul executors
+* the SSH key to log in to the executors to `zuul` user
+
+The procedure is the following:
+
+#. Check out the ci_utils_ repository. The relevant scripts are in tungsten_ci_utils/zuul_abort.
+#. Create a `config.yaml` file according to the given `config.yaml.template` template file.
+#. If you want to abort a nightly build execute:
+
+  .. code:: bash
+
+    $ python kill_buildset.py --forever R5.1
+
+#. If you want to abort a running changeset-related buildset, pass in the buildset ID instead of
+   the branch name. See section `Retrieving a buildset ID`_.
+
+  .. code:: bash
+
+    $ python kill_buildset.py --forever 5af9952dadf54457800aed96b3da8f61
+
+NOTE: The repository and a proper `config.yaml` are already present on ci-repo.englab.juniper.net
+in /root/ci-utils/tungsten_ci_utils/zuul_abort directory. You can run the script directly from
+there.
+
+NOTE2: Keep in mind that if you abort a job when it is running its pre-playbooks, the job will be
+requeued up to 2 times. This will most likely extend the time it takes to abort the whole buildset,
+due to the time it takes to wait for a new machine to be spawned for the next retry of the job.
+
+Retrieving a buildset ID
+************************
+
+There are a number of ways to retrieve a running buildset ID:
+
+#. If at least one job in the buildset already finished:
+
+  * Open the job link from zuulv3.opencontrail.org.
+  * Open the zuul-info/inventory.yaml file.
+  * Search for `buildset`. The value of the key will be the ID.
+
+#. If no jobs finished:
+
+  * Open https://zuulv3.opencontrail.org/status.json (you'll probably want to open it in a browser
+    which allow to comfortably examine JSON data; or use a CLI tool or an online site).
+  * Search through the JSON, looking for data matching your running buildset.
+
+    * First choose the right `pipeline`.
+    * Then search through the running jobs data and match on the `id` value, which is the review ID
+      and the patchset number.
+    * The `zuul_ref` value is the buildset ID prefixed with a 'Z' e.g. `Z248eae43105144a6bb7b70d56c58e664`.
+      Thus for this exemplary zuul_ref you would be interested in the `248eae43105144a6bb7b70d56c58e664`
+      value.
 
 Streaming Job Execution Logs
 ----------------------------
@@ -230,3 +308,5 @@ To list the built images and their age perform the following:
 
 If the age of any image indicates it's older than 1 day, then there's something wrong with rebuilding
 the image and it needs to be investigated.
+
+.. _ci_utils: https://github.com/tungsten-infra/ci-utils
