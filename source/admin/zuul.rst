@@ -30,6 +30,46 @@ This procedure also involves Gerrit:
   A. If commits are not being replicated and there is no mention of the project in the replication.log
      then most likely the replication config is invalid (check $GERRIT_HOME/review_site/etc/replication.config).
 
+Logging on the builder VMs
+--------------------------
+
+You can login to the auto-spawned VM while it is running a zuul job. But expect to be
+logged out at any moment: the VM is automatically deleted after the job finishes
+(unless caught by autohold as described in the following sections).
+
+First you need a Node ID, from which you get'll the IP address and ssh to it.
+
+Filter the scheduler’s log:
+
+  .. code:: bash
+
+    $ ssh zuulv3             # scheduler
+    $ grep Execute /var/log/zuul/zuul.log | less -S
+
+    Execute job contrail-vnc-build-package-centos74 (uuid: b37ecc4231a1400fb1d35b7fb996f970) on nodes <NodeSet OrderedDict([('builder', <Node 0000247169 builder:centos-7-4-builder>)])OrderedDict()> for change <Change 0x7fe2111cbbe0 51790,1> with ...
+                                                                   scroll ----->    scroll ----->                                     ----->  ^^^^^^^^^^  <-----
+
+This message appears in the log just before the job starts.
+In this example Node ID is ``0000247169`` (and the originating gerrit changeset is ``51790``).
+Having obtained it, now login to machine that has ``nodepool`` utility and access to Zookeeper:
+
+  .. code:: bash
+
+    $ ssh nl02-jnpr          # nodepool launcher
+    $ sudo -u nodepool -i
+    $ nodepool list --detail
+
+Use the obtained Node ID to find the corresponding public IP address.
+Now login to the executor:
+
+  .. code:: bash
+
+    $ ssh ze03-jnpr          # executor
+    $ sudo ssh -i /var/lib/zuul/ssh/id_rsa zuul@<node_public_ip>
+
+You are now on the host that is a client to the actual ansible playbooks
+governed by zuul.
+
 Autoholding VMs
 ---------------
 
