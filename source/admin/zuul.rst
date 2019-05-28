@@ -291,12 +291,12 @@ There are two possible ways to view running job output:
 Nodepool Builder
 ----------------
 
-Images used for spawning nodepool VMs are rebuilt every day by the nodepool builder service (a.k.a
-DIB a.k.a disk-image-builder). This approach ensures disk image builder code is current and the
-functionality to build the base images for CI is always available.
+Images used for spawning nodepool VMs are rebuilt every day by the nodepool builder service, which
+is a daemon which uses disk-image-builder_. This approach ensures disk image builder code is current
+and the functionality to build the base images for CI is always available.
 
-DIB holds the last two successfully built images, rotating them with each new successfull build.
-To list the built images and their age perform the following:
+Nodepool builder holds the last two successfully built images, rotating them with each new
+successful build. To list the built images and their age perform the following:
 
 #. SSH into the nodepool builder node.
 #. List the images after logging in to nodepool user:
@@ -310,3 +310,43 @@ If the age of any image indicates it's older than 1 day, then there's something 
 the image and it needs to be investigated.
 
 .. _ci_utils: https://github.com/tungsten-infra/ci-utils
+.. _disk-image-builder: https://docs.openstack.org/diskimage-builder/latest/
+
+Manual Image Builds
+*******************
+
+For troubleshooting purposes it might be necessary to mimic nodepools building logic manually.
+Prior to running disk image builder, nodepool builder sets up the environment. The variables and
+values for a particular image can be found in nodepool.yaml_ configuration file. Suppose we would
+want to build an ubuntu image like nodepool does it:
+
+#. Prepare an environment file and source it. You'd want to use the environment variables and their
+   values which nodepool uses e.g.:
+
+  .. code:: bash
+
+    export DIB_DISTRIBUTION_MIRROR=http://10.84.5.38:8000/ubuntu
+    export DIB_IMAGE_FILENAME=/opt/nodepool_dib/ubuntu-xenial-0000059758
+    export DIB_IMAGE_NAME=ubuntu-xenial
+    export DIB_DISABLE_APT_CLEANUP=1
+    export DIB_RELEASE=xenial
+    export DIB_IMAGE_CACHE=/opt/dib_cache
+    export DIB_APT_LOCAL_CACHE=0
+    export DIB_DEBIAN_COMPONENTS=main,universe
+    export DIB_CHECKSUM=1
+    export DIB_DEBOOTSTRAP_EXTRA_ARGS=--no-check-gpg
+    export DIB_GRUB_TIMEOUT=0
+    export ELEMENTS_PATH=/etc/nodepool/elements
+
+#. Execute:
+
+  .. code:: bash
+
+    $ mkdir /tmp/ubuntu-xenial-manual
+    $ disk-image-create -x -t qcow2 --checksum --no-tmpfs --qemu-img-options 'compat=0.10' \
+      -o /tmp/ubuntu-xenial-manual/image ubuntu vm growroot pip-and-virtualenv tox \
+      nodepool-base contrail-builder
+
+The image will be available in the temporary directory.
+
+.. _nodepool.yaml: https://github.com/Juniper/contrail-project-config/blob/master/nodepool/nodepool.yaml
