@@ -16,6 +16,24 @@
       "revId": "599525e06a7d2b665e6a414b3d97d6a5394f4921",
       "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f5c4f37_d980648e",
+        "filename": "source/admin/forcemerge.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 760
+      },
+      "writtenOn": "2019-07-11T07:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f5c4f37_196ddc31",
+      "revId": "599525e06a7d2b665e6a414b3d97d6a5394f4921",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": false
     }
   ]
 }
