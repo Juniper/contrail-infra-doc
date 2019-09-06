@@ -12,4 +12,3 @@ Gerrit group. To force merge a review you need to:
   
 - refresh a Gerrit page in browser and a new button ``Submit`` will appear
 - click ``Submit`` to merge the change
-
