@@ -184,7 +184,6 @@ Use the following modules by default:
   * `package` instead of `yum` and `apt`
   * `command` instead of `shell` when actual shell functionality is not needed
 
-
 Linter
 ------
 
