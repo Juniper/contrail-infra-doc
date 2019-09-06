@@ -13,7 +13,6 @@ Welcome to OpenContrail CI's team documentation.
    architecture/index
    rfc/index
 
-
 Indices and tables
 ==================
 
