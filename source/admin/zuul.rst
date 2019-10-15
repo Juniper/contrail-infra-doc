@@ -199,20 +199,43 @@ role.
 Restarting Zuul
 ---------------
 
-Restarting Zuul aborts all of the running jobs. It is possible, however, to save the information on
-the running jobs and requeue them after the restart is done. This can be done with the zuul_changes.py
-script available in Zuul tools. The script is located in /opt/zuul/tools/. An example run, to
-dump the commands to requeue all buildsets for the check pipeline would be:
+Restarting Zuul aborts all of the running jobs. It is advisable to save the information on
+the running jobs on zuulv3.opencontrail.org and to requeue them after the restart is done:
 
 .. code:: bash
 
-   /opt/zuul/tools/zuul_changes.py http://zuulv3.opencontrail.org opencontrail check > queue_dump
+   /root/zuul_restarts/dump_queues.sh
+   ls -lart
 
-After Zuul is restarted, all that is needed to be done is to `source` the `queue_dump` file.
+Verify that `queue_<TIMESTAMP>.txt` file with a fresh timestamp has been created.
 
-There is a simple script written to dump requeue commands for all pipelines on zuulv3.opencontrail.org
-at /root/zuul_restarts/dump_queues.sh. Execute it before a restart and source the newest
-`queue_<timestamp>.txt` file after Zuul is running again.
+.. code:: bash
+
+   systemctl restart zuul-scheduler
+   less /var/log/zuul/zuul.log
+
+The restart should be attended, because it frequently fails. You should see at first log message saying `Starting scheduler`.
+Then many messages mentioning `Merge`. If you see any `Exception` or `ERROR` in the meantime, it probably means the restart will not be successful
+and so consider reattempting the restart immediately. The `Merge` messages will continue whether or not restart can succeed - don't be confused by that.
+
+If the `Merge` activity completed (there are only two TCP connections to gerrit, nothing is being git-downloaded) and nothing else happens for 30 seconds or more, restart
+will probably not succeed and your should consider reattempting it immediately.
+
+Restart can be considered successful after this line: `zuul.Pipeline.opencontrail.check: Configured Pipeline Manager check`
+
+After Zuul is correctly started, re-launch the old jobs from the beginning:
+
+.. code:: bash
+
+   systemctl restart zuul-scheduler
+   source queue_TIMESTAMP.txt
+
+Go to the zuul's status page and verify the progress of the jobs, then clean up:
+
+.. code:: bash
+
+   rm queue_TIMESTAMP.txt
+
 
 Aborting Builds
 ---------------
