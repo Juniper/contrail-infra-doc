@@ -3,6 +3,8 @@ Monitoring
 
 CI monitoring solution consists of several parts:
 
+* Prometheus as the main system and service monitoring tool
+* Alertmanager as the alerting toolkit
 * Grafana for data visualization
 * Graphite as a metrics storage
 * Zuul reporters for reporting information about jobs status
