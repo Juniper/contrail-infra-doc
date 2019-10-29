@@ -3,6 +3,9 @@
     check:
       jobs:
         - build-infra-doc
+        - publish-infra-doc:
+            dependencies:
+              - build-infra-doc
     gate:
       jobs:
         - build-infra-doc
