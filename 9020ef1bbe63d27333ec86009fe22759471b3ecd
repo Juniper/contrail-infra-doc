@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fba14b8d_3725fc64",
+        "filename": ".zuul.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 760
+      },
+      "writtenOn": "2019-10-30T11:25:24Z",
+      "side": 1,
+      "message": "I look at the logs that zuulv3 has sent. Why do you keep job \"build-infra-doc\"? Is it needed?",
+      "revId": "9020ef1bbe63d27333ec86009fe22759471b3ecd",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af36a3ab_e3d5848b",
+        "filename": ".zuul.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 760
+      },
+      "writtenOn": "2019-10-30T11:25:24Z",
+      "side": 1,
+      "message": "I look at the logs that zuulv3 has sent. This published to a production site the changes before they were code-reviewed and accepted. Wouldn\u0027t it be better to change `playbooks/publish-infra-doc/tasks/main.yaml` to publish to a subdirectory \u003cchangeset\u003e,\u003cpatchset\u003e when you see you are in `check` or `gate`?\n\nProduction site should ideally  be updated in `post-merge` if this pipeline works. There are `zuul.*` ansible vars that can be easily used, such as {{ zuul.pipeline }} to discover how was the job executed.",
+      "revId": "9020ef1bbe63d27333ec86009fe22759471b3ecd",
+      "serverId": "c72cd27d-1743-4a55-84a4-cd13b8400c52",
+      "unresolved": true
+    }
+  ]
+}
