@@ -14,7 +14,7 @@ Grafana & Graphite
 ------------------
 
 Both Grafana and Graphite are set up on the same server. You can view the Grafana interface at
-http://148.251.5.91/grafana while Graphite's at http://148.251.5.91/graphite.
+http://grafana.opencontrail.org/grafana while Graphite's at http://grafana.opencontrail.org/graphite.
 
 MySQL
 -----
@@ -32,6 +32,17 @@ Collectd is a metric collector and aggregator, running on the infra nodes. It se
 periodically to Graphite. It currently mostly gathers physical resource utilisation but it is
 possible to use it to send metric data from your own application (or even a bash script).
 
+Collectd exec scripts
+---------------------
+
+Collectd has an ability to execute external scripts and submit its results to Graphite.
+
+Remote http/https checks by blackbox_exporter
+---------------------------------------------
+
+Http and https services are remotely checked by blackbox_exporter which is a part of internal
+(private) monitoring.
+
 Test Runner
 -----------
 
@@ -39,7 +50,8 @@ The contrail-vnc-unittest-centos7-tntestr_ job sends unit test statistics inform
 statistics gathering script_. More information about the solution, on what kind of statistics are
 being gathered can be found in the README file in test runner_ repository.
 
+
+
 .. _script: https://github.com/tungsten-infra/ci-utils/blob/master/tungsten_ci_utils/test_statistics/test-analyzer.py
 .. _contrail-vnc-unittest-centos7-tntestr: https://github.com/Juniper/contrail-zuul-jobs/blob/master/zuul.d/contrail-jobs.yaml#L25
 .. _runner: https://github.com/tungstenfabric/tungsten-test-runner
-
