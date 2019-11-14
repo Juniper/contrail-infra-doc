@@ -11,3 +11,4 @@ Administrator's Guide
    repos-registries
    zuul
    monitoring
+   SSL-certs
